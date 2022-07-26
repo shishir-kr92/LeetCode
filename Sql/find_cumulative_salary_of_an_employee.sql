@@ -22,3 +22,13 @@ from (select *,
 from employee_3) tmp
 where rnum > 1
 
+-- Solution 3
+with cte as  (select *,
+    case when month - 1 =  lead(month) over(partition by id order by month desc) then lead(Salary) over(partition by id order by month desc) else 0 end as salary1,
+    case when month - 2 =  lead(month, 2) over(partition by id order by month desc) then lead(Salary,2) over(partition by id order by month desc) else 0 end as salary2,
+    dense_rank() over(partition by id order by month desc) as rnk
+from employee_3)
+
+select id, month , (salary + salary1 +  salary2) as salary
+from cte where rnk != 1
+order by id

@@ -9,8 +9,8 @@ mydb = mysql.connector.connect(
 
 cur = mydb.cursor()
 
-table  = "RequestAccepted"
-datas = [[1,2,"2016/06/03"],[1,3,"2016/06/08"],[2,3,"2016/06/08"],[3,4,"2016/06/09"]]
+table  = "Activities"
+datas = [[1, "Eating"], [2, "Singing"], [3, "Horse Riding"]]
 for data in datas:
     sql = f"insert into {table} values {tuple(data)};"
     print(sql)

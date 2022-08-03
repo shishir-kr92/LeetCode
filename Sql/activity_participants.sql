@@ -12,3 +12,6 @@ from cte
 where  cnt  not in (select max(cnt) from cte)
     and cnt  not in (select min(cnt) from cte)
 
+
+
+select * from Friends

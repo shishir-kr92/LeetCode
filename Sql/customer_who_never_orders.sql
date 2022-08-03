@@ -10,3 +10,16 @@ from `Customers` c
 left join `Orders` o on c.id = o.customerId
 where o.id is null
 order by 1
+
+
+select * from Customers
+select * from Orders
+
+-- Customers.id, Orders.id as tmp
+
+Select *
+from Orders
+right join Customers
+On Customers.customer_id = Orders.customerId
+--Where id is not Null
+
